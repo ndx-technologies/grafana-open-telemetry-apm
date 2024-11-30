@@ -174,20 +174,7 @@
                     },
                     "unit": "percentunit"
                 },
-                "overrides": [
-                    {
-                        "matcher": {
-                            "id": "byName",
-                            "options": "(sum (increase(span_metrics_calls_total{service_name=~\"(auth-service-grpc|auth-service-http|product-service)\", service_version=~\"(product|store-apple-user-age|v0\\\\.3\\\\.9|v0\\\\.4\\\\.0)\", service_namespace=~\"production\", status_code=\"STATUS_CODE_ERROR\",span_kind=\"SPAN_KIND_CLIENT\"}[30s]) or on() vector(0))\n\n/\n\nsum (increase(span_metrics_calls_total{service_name=~\"(auth-service-grpc|auth-service-http|product-service)\", service_version=~\"(product|store-apple-user-age|v0\\\\.3\\\\.9|v0\\\\.4\\\\.0)\", service_namespace=~\"production\",span_kind=\"SPAN_KIND_CLIENT\"}[30s])))"
-                        },
-                        "properties": [
-                            {
-                                "id": "unit",
-                                "value": "percentunit"
-                            }
-                        ]
-                    }
-                ]
+                "overrides": []
             },
             "gridPos": {
                 "h": 4,
