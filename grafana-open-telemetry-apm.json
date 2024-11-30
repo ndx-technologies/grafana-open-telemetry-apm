@@ -683,7 +683,7 @@
                     },
                     "disableTextWrap": false,
                     "editorMode": "code",
-                    "expr": "sum by(service_version,span_name) (increase(span_metrics_calls_total{service_name=~\"$service_name\", service_version=~\"$service_version\", service_namespace=~\"$service_namespace\",span_kind=\"$span_kind\",span_name=~\"$span_name\"}[$__interval]))",
+                    "expr": "sum by(span_name) (increase(span_metrics_calls_total{service_name=~\"$service_name\", service_version=~\"$service_version\", service_namespace=~\"$service_namespace\",span_kind=\"$span_kind\",span_name=~\"$span_name\"}[$__interval]))",
                     "fullMetaSearch": false,
                     "includeNullMetadata": true,
                     "instant": false,
@@ -1161,13 +1161,13 @@
         ]
     },
     "time": {
-        "from": "now-1h",
-        "to": "now"
+        "from": "2024-11-30T08:17:28.714Z",
+        "to": "2024-11-30T10:28:18.596Z"
     },
     "timepicker": {},
     "timezone": "browser",
     "title": "APM",
     "uid": "zJfYJhynt",
-    "version": 9,
+    "version": 10,
     "weekStart": ""
 }
