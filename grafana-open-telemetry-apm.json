@@ -15,7 +15,7 @@
             "type": "grafana",
             "id": "grafana",
             "name": "Grafana",
-            "version": "11.3.0"
+            "version": "11.3.1"
         },
         {
             "type": "datasource",
@@ -130,7 +130,7 @@
                 "textMode": "auto",
                 "wideLayout": true
             },
-            "pluginVersion": "11.3.0",
+            "pluginVersion": "11.3.1",
             "targets": [
                 {
                     "datasource": {
@@ -138,7 +138,7 @@
                         "uid": "${DS_PROMETHEUS}"
                     },
                     "editorMode": "code",
-                    "expr": "sum (increase(span_metrics_calls_total{service_name=~\"$service_name\", service_version=~\"$service_version\", service_namespace=~\"$service_namespace\",span_kind=\"$span_kind\"}[$__interval]))",
+                    "expr": "sum (increase(span_metrics_calls_total{service_name=~\"$service_name\", service_version=~\"$service_version\", service_namespace=~\"$service_namespace\",span_kind=\"$span_kind\",span_name=~\"$span_name\"}[$__interval]))",
                     "instant": false,
                     "legendFormat": "__auto",
                     "range": true,
@@ -213,7 +213,7 @@
                 "textMode": "auto",
                 "wideLayout": true
             },
-            "pluginVersion": "11.3.0",
+            "pluginVersion": "11.3.1",
             "targets": [
                 {
                     "datasource": {
@@ -221,7 +221,7 @@
                         "uid": "${DS_PROMETHEUS}"
                     },
                     "editorMode": "code",
-                    "expr": "(\n    sum (increase(span_metrics_calls_total{service_name=~\"$service_name\", service_version=~\"$service_version\", service_namespace=~\"$service_namespace\", status_code=\"STATUS_CODE_ERROR\",span_kind=\"$span_kind\"}[$__interval]) or on(service_version) vector(0))\n\n    /\n\n    sum (increase(span_metrics_calls_total{service_name=~\"$service_name\", service_version=~\"$service_version\", service_namespace=~\"$service_namespace\",span_kind=\"$span_kind\"}[$__interval]))\n\n) or on() vector(0)",
+                    "expr": "(\n    sum (increase(span_metrics_calls_total{service_name=~\"$service_name\", service_version=~\"$service_version\", service_namespace=~\"$service_namespace\", status_code=\"STATUS_CODE_ERROR\",span_kind=\"$span_kind\",span_name=~\"$span_name\"}[$__interval]) or on(service_version) vector(0))\n\n    /\n\n    sum (increase(span_metrics_calls_total{service_name=~\"$service_name\", service_version=~\"$service_version\", service_namespace=~\"$service_namespace\",span_kind=\"$span_kind\",span_name=~\"$span_name\"}[$__interval]))\n\n) or on() vector(0)",
                     "instant": false,
                     "legendFormat": "__auto",
                     "range": true,
@@ -283,7 +283,7 @@
                 "textMode": "auto",
                 "wideLayout": true
             },
-            "pluginVersion": "11.3.0",
+            "pluginVersion": "11.3.1",
             "targets": [
                 {
                     "datasource": {
@@ -291,7 +291,7 @@
                         "uid": "${DS_PROMETHEUS}"
                     },
                     "editorMode": "code",
-                    "expr": "histogram_quantile(0.95, sum(rate(span_metrics_duration_seconds_bucket{service_name=~\"$service_name\", service_version=~\"$service_version\", service_namespace=~\"$service_namespace\",span_kind=\"$span_kind\"}[$__rate_interval])) by (le))",
+                    "expr": "histogram_quantile(0.95, sum(rate(span_metrics_duration_seconds_bucket{service_name=~\"$service_name\", service_version=~\"$service_version\", service_namespace=~\"$service_namespace\",span_kind=\"$span_kind\",span_name=~\"$span_name\"}[$__rate_interval])) by (le))",
                     "instant": false,
                     "legendFormat": "__auto",
                     "range": true,
@@ -380,7 +380,7 @@
                     "sort": "none"
                 }
             },
-            "pluginVersion": "11.3.0",
+            "pluginVersion": "11.3.1",
             "targets": [
                 {
                     "datasource": {
@@ -389,7 +389,7 @@
                     },
                     "disableTextWrap": false,
                     "editorMode": "code",
-                    "expr": "sum by(service_version) (increase(span_metrics_calls_total{service_name=~\"$service_name\", service_version=~\"$service_version\", service_namespace=~\"$service_namespace\",span_kind=\"$span_kind\"}[$__interval]))",
+                    "expr": "sum by(service_version) (increase(span_metrics_calls_total{service_name=~\"$service_name\", service_version=~\"$service_version\", service_namespace=~\"$service_namespace\",span_kind=\"$span_kind\",span_name=~\"$span_name\"}[$__interval]))",
                     "fullMetaSearch": false,
                     "includeNullMetadata": true,
                     "instant": false,
@@ -484,7 +484,7 @@
                     "sort": "none"
                 }
             },
-            "pluginVersion": "11.3.0",
+            "pluginVersion": "11.3.1",
             "targets": [
                 {
                     "datasource": {
@@ -493,7 +493,7 @@
                     },
                     "disableTextWrap": false,
                     "editorMode": "code",
-                    "expr": "(\n    sum by(service_version) (increase(span_metrics_calls_total{service_name=~\"$service_name\", service_version=~\"$service_version\", service_namespace=~\"$service_namespace\", status_code=\"STATUS_CODE_ERROR\",span_kind=\"$span_kind\"}[$__interval]) or on(service_version) vector(0))\n\n    /\n\n    sum by(service_version) (increase(span_metrics_calls_total{service_name=~\"$service_name\", service_version=~\"$service_version\", service_namespace=~\"$service_namespace\",span_kind=\"$span_kind\"}[$__interval]))\n\n) or on(service_version)\n\nsum by(service_version) (increase(span_metrics_calls_total{service_name=~\"$service_name\", service_version=~\"$service_version\", service_namespace=~\"$service_namespace\",span_kind=\"$span_kind\"}[$__interval]) * 0)",
+                    "expr": "(\n    sum by(service_version) (increase(span_metrics_calls_total{service_name=~\"$service_name\", service_version=~\"$service_version\", service_namespace=~\"$service_namespace\", status_code=\"STATUS_CODE_ERROR\",span_kind=\"$span_kind\",span_name=~\"$span_name\"}[$__interval]) or on(service_version) vector(0))\n\n    /\n\n    sum by(service_version) (increase(span_metrics_calls_total{service_name=~\"$service_name\", service_version=~\"$service_version\", service_namespace=~\"$service_namespace\",span_kind=\"$span_kind\",span_name=~\"$span_name\"}[$__interval]))\n\n) or on(service_version)\n\nsum by(service_version) (increase(span_metrics_calls_total{service_name=~\"$service_name\", service_version=~\"$service_version\", service_namespace=~\"$service_namespace\",span_kind=\"$span_kind\",span_name=~\"$span_name\"}[$__interval]) * 0)",
                     "fullMetaSearch": false,
                     "includeNullMetadata": true,
                     "instant": false,
@@ -589,7 +589,7 @@
                     "sort": "none"
                 }
             },
-            "pluginVersion": "11.3.0",
+            "pluginVersion": "11.3.1",
             "targets": [
                 {
                     "datasource": {
@@ -597,7 +597,7 @@
                         "uid": "${DS_PROMETHEUS}"
                     },
                     "editorMode": "code",
-                    "expr": "histogram_quantile(0.95, sum(rate(span_metrics_duration_seconds_bucket{service_name=~\"$service_name\", service_version=~\"$service_version\", service_namespace=~\"$service_namespace\",span_kind=\"$span_kind\"}[$__rate_interval])) by (le, service_version))",
+                    "expr": "histogram_quantile(0.95, sum(rate(span_metrics_duration_seconds_bucket{service_name=~\"$service_name\", service_version=~\"$service_version\", service_namespace=~\"$service_namespace\",span_kind=\"$span_kind\",span_name=~\"$span_name\"}[$__rate_interval])) by (le, service_version))",
                     "instant": false,
                     "legendFormat": "__auto",
                     "range": true,
@@ -687,7 +687,7 @@
                     "sort": "none"
                 }
             },
-            "pluginVersion": "11.3.0",
+            "pluginVersion": "11.3.1",
             "targets": [
                 {
                     "datasource": {
@@ -696,7 +696,7 @@
                     },
                     "disableTextWrap": false,
                     "editorMode": "code",
-                    "expr": "sum by(span_name) (rate(span_metrics_calls_total{service_name=~\"$service_name\", service_version=~\"$service_version\", service_namespace=~\"$service_namespace\",span_kind=\"$span_kind\"}[$__rate_interval]))",
+                    "expr": "",
                     "fullMetaSearch": false,
                     "includeNullMetadata": true,
                     "instant": false,
@@ -794,7 +794,7 @@
                     "sort": "none"
                 }
             },
-            "pluginVersion": "11.3.0",
+            "pluginVersion": "11.3.1",
             "targets": [
                 {
                     "datasource": {
@@ -802,7 +802,7 @@
                         "uid": "${DS_PROMETHEUS}"
                     },
                     "editorMode": "code",
-                    "expr": "(\n    sum by(span_name) (increase(span_metrics_calls_total{service_name=~\"$service_name\", service_version=~\"$service_version\", service_namespace=~\"$service_namespace\", status_code=\"STATUS_CODE_ERROR\",span_kind=\"$span_kind\"}[$__interval]) or on(span_name) vector(0))\n\n    /\n\n    sum by(span_name) (increase(span_metrics_calls_total{service_name=~\"$service_name\", service_version=~\"$service_version\", service_namespace=~\"$service_namespace\",span_kind=\"$span_kind\"}[$__interval]))\n\n) or on(span_name)\n\nsum by(span_name) (increase(span_metrics_calls_total{service_name=~\"$service_name\", service_version=~\"$service_version\", service_namespace=~\"$service_namespace\",span_kind=\"$span_kind\"}[$__interval]) * 0)",
+                    "expr": "(\n    sum by(span_name) (increase(span_metrics_calls_total{service_name=~\"$service_name\", service_version=~\"$service_version\", service_namespace=~\"$service_namespace\", status_code=\"STATUS_CODE_ERROR\",span_kind=\"$span_kind\",span_name=~\"$span_name\"}[$__interval]) or on(span_name) vector(0))\n\n    /\n\n    sum by(span_name) (increase(span_metrics_calls_total{service_name=~\"$service_name\", service_version=~\"$service_version\", service_namespace=~\"$service_namespace\",span_kind=\"$span_kind\",span_name=~\"$span_name\"}[$__interval]))\n\n) or on(span_name)\n\nsum by(span_name) (increase(span_metrics_calls_total{service_name=~\"$service_name\", service_version=~\"$service_version\", service_namespace=~\"$service_namespace\",span_kind=\"$span_kind\",span_name=~\"$span_name\"}[$__interval]) * 0)",
                     "instant": false,
                     "legendFormat": "__auto",
                     "range": true,
@@ -895,7 +895,7 @@
                     "sort": "none"
                 }
             },
-            "pluginVersion": "11.3.0",
+            "pluginVersion": "11.3.1",
             "targets": [
                 {
                     "datasource": {
@@ -903,7 +903,7 @@
                         "uid": "${DS_PROMETHEUS}"
                     },
                     "editorMode": "code",
-                    "expr": "histogram_quantile(0.95, sum(rate(span_metrics_duration_seconds_bucket{service_name=~\"$service_name\", service_version=~\"$service_version\", service_namespace=~\"$service_namespace\",span_kind=\"$span_kind\"}[$__rate_interval])) by (le, span_name))",
+                    "expr": "histogram_quantile(0.95, sum(rate(span_metrics_duration_seconds_bucket{service_name=~\"$service_name\", service_version=~\"$service_version\", service_namespace=~\"$service_namespace\",span_kind=\"$span_kind\",span_name=~\"$span_name\"}[$__rate_interval])) by (le, span_name))",
                     "instant": false,
                     "legendFormat": "__auto",
                     "range": true,
@@ -1032,7 +1032,7 @@
                     }
                 ]
             },
-            "pluginVersion": "11.3.0",
+            "pluginVersion": "11.3.1",
             "targets": [
                 {
                     "datasource": {
@@ -1040,7 +1040,7 @@
                         "uid": "${DS_PROMETHEUS}"
                     },
                     "editorMode": "code",
-                    "expr": "sum by(span_name) (increase(span_metrics_calls_total{service_name=~\"$service_name\", service_version=~\"$service_version\", service_namespace=~\"$service_namespace\",span_kind=\"$span_kind\"}[$__interval]))",
+                    "expr": "sum by(span_name) (increase(span_metrics_calls_total{service_name=~\"$service_name\", service_version=~\"$service_version\", service_namespace=~\"$service_namespace\",span_kind=\"$span_kind\",span_name=~\"$span_name\"}[$__interval]))",
                     "hide": false,
                     "instant": false,
                     "legendFormat": "__auto",
@@ -1053,7 +1053,7 @@
                         "uid": "${DS_PROMETHEUS}"
                     },
                     "editorMode": "code",
-                    "expr": "(\n    sum by(span_name) (increase(span_metrics_calls_total{service_name=~\"$service_name\", service_version=~\"$service_version\", service_namespace=~\"$service_namespace\", status_code=\"STATUS_CODE_ERROR\",span_kind=\"$span_kind\"}[$__interval]) or on(span_name) vector(0))\n\n    /\n\n    sum by(span_name) (increase(span_metrics_calls_total{service_name=~\"$service_name\", service_version=~\"$service_version\", service_namespace=~\"$service_namespace\",span_kind=\"$span_kind\"}[$__interval]))\n\n) or on(span_name)\n\nsum by(span_name) (increase(span_metrics_calls_total{service_name=~\"$service_name\", service_version=~\"$service_version\", service_namespace=~\"$service_namespace\",span_kind=\"$span_kind\"}[$__interval]) * 0)",
+                    "expr": "(\n    sum by(span_name) (increase(span_metrics_calls_total{service_name=~\"$service_name\", service_version=~\"$service_version\", service_namespace=~\"$service_namespace\", status_code=\"STATUS_CODE_ERROR\",span_kind=\"$span_kind\",span_name=~\"$span_name\"}[$__interval]) or on(span_name) vector(0))\n\n    /\n\n    sum by(span_name) (increase(span_metrics_calls_total{service_name=~\"$service_name\", service_version=~\"$service_version\", service_namespace=~\"$service_namespace\",span_kind=\"$span_kind\",span_name=~\"$span_name\"}[$__interval]))\n\n) or on(span_name)\n\nsum by(span_name) (increase(span_metrics_calls_total{service_name=~\"$service_name\", service_version=~\"$service_version\", service_namespace=~\"$service_namespace\",span_kind=\"$span_kind\",span_name=~\"$span_name\"}[$__interval]) * 0)",
                     "hide": false,
                     "instant": false,
                     "legendFormat": "__auto",
@@ -1066,7 +1066,7 @@
                         "uid": "${DS_PROMETHEUS}"
                     },
                     "editorMode": "code",
-                    "expr": "histogram_quantile(0.95, sum(rate(span_metrics_duration_seconds_bucket{service_name=~\"$service_name\", service_version=~\"$service_version\", service_namespace=~\"$service_namespace\",span_kind=\"$span_kind\"}[$__rate_interval]) or on() vector(0)) by (le, span_name))",
+                    "expr": "histogram_quantile(0.95, sum(rate(span_metrics_duration_seconds_bucket{service_name=~\"$service_name\", service_version=~\"$service_version\", service_namespace=~\"$service_namespace\",span_kind=\"$span_kind\",span_name=~\"$span_name\"}[$__rate_interval]) or on() vector(0)) by (le, span_name))",
                     "hide": false,
                     "instant": false,
                     "legendFormat": "__auto",
@@ -1101,7 +1101,7 @@
             "type": "table"
         }
     ],
-    "refresh": "10s",
+    "refresh": "30s",
     "schemaVersion": 40,
     "tags": [],
     "templating": {
@@ -1185,17 +1185,38 @@
                 "refresh": 2,
                 "regex": "",
                 "type": "query"
+            },
+            {
+                "current": {},
+                "datasource": {
+                    "type": "prometheus",
+                    "uid": "${DS_PROMETHEUS}"
+                },
+                "definition": "label_values(span_metrics_calls_total,span_name)",
+                "includeAll": true,
+                "label": "span_name",
+                "multi": true,
+                "name": "span_name",
+                "options": [],
+                "query": {
+                    "qryType": 1,
+                    "query": "label_values(span_metrics_calls_total,span_name)",
+                    "refId": "PrometheusVariableQueryEditor-VariableQuery"
+                },
+                "refresh": 1,
+                "regex": "",
+                "type": "query"
             }
         ]
     },
     "time": {
-        "from": "now-24h",
+        "from": "now-3h",
         "to": "now"
     },
     "timepicker": {},
     "timezone": "browser",
     "title": "APM",
     "uid": "zJfYJhynt",
-    "version": 1,
+    "version": 4,
     "weekStart": ""
 }
