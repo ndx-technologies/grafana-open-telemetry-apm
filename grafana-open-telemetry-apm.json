@@ -683,7 +683,7 @@
                     },
                     "disableTextWrap": false,
                     "editorMode": "code",
-                    "expr": "",
+                    "expr": "sum by(service_version,span_name) (increase(span_metrics_calls_total{service_name=~\"$service_name\", service_version=~\"$service_version\", service_namespace=~\"$service_namespace\",span_kind=\"$span_kind\",span_name=~\"$span_name\"}[$__interval]))",
                     "fullMetaSearch": false,
                     "includeNullMetadata": true,
                     "instant": false,
@@ -1168,6 +1168,6 @@
     "timezone": "browser",
     "title": "APM",
     "uid": "zJfYJhynt",
-    "version": 8,
+    "version": 9,
     "weekStart": ""
 }
