@@ -158,19 +158,6 @@
             "type": "heatmap"
         },
         {
-            "collapsed": false,
-            "gridPos": {
-                "h": 1,
-                "w": 24,
-                "x": 0,
-                "y": 9
-            },
-            "id": 38,
-            "panels": [],
-            "title": "Endpoints",
-            "type": "row"
-        },
-        {
             "datasource": {
                 "type": "prometheus",
                 "uid": "${DS_PROMETHEUS}"
@@ -197,7 +184,7 @@
                 "h": 4,
                 "w": 8,
                 "x": 0,
-                "y": 10
+                "y": 9
             },
             "id": 91,
             "options": {
@@ -232,7 +219,7 @@
                     "refId": "A"
                 }
             ],
-            "title": "num_requests",
+            "title": "num requests",
             "type": "stat"
         },
         {
@@ -267,7 +254,7 @@
                 "h": 4,
                 "w": 8,
                 "x": 8,
-                "y": 10
+                "y": 9
             },
             "id": 92,
             "options": {
@@ -302,7 +289,7 @@
                     "refId": "error_rate"
                 }
             ],
-            "title": "error_rate",
+            "title": "error rate",
             "type": "stat"
         },
         {
@@ -337,7 +324,7 @@
                 "h": 4,
                 "w": 8,
                 "x": 16,
-                "y": 10
+                "y": 9
             },
             "id": 93,
             "options": {
@@ -372,8 +359,21 @@
                     "refId": "A"
                 }
             ],
-            "title": "latency_p95",
+            "title": "latency p95",
             "type": "stat"
+        },
+        {
+            "collapsed": false,
+            "gridPos": {
+                "h": 1,
+                "w": 24,
+                "x": 0,
+                "y": 13
+            },
+            "id": 95,
+            "panels": [],
+            "title": "Version",
+            "type": "row"
         },
         {
             "datasource": {
@@ -473,7 +473,7 @@
                     "useBackend": false
                 }
             ],
-            "title": " num_requests_by_version",
+            "title": " num requests",
             "type": "timeseries"
         },
         {
@@ -577,7 +577,7 @@
                     "useBackend": false
                 }
             ],
-            "title": "error_rate_by_version",
+            "title": "error rate",
             "type": "timeseries"
         },
         {
@@ -678,8 +678,21 @@
                     "refId": "A"
                 }
             ],
-            "title": "latency_p95_by_version",
+            "title": "latency p95",
             "type": "timeseries"
+        },
+        {
+            "collapsed": false,
+            "gridPos": {
+                "h": 1,
+                "w": 24,
+                "x": 0,
+                "y": 20
+            },
+            "id": 38,
+            "panels": [],
+            "title": "Endpoints",
+            "type": "row"
         },
         {
             "datasource": {
@@ -746,7 +759,7 @@
                 "h": 6,
                 "w": 8,
                 "x": 0,
-                "y": 20
+                "y": 21
             },
             "id": 76,
             "options": {
@@ -780,7 +793,7 @@
                     "useBackend": false
                 }
             ],
-            "title": "request_rate",
+            "title": "request rate",
             "type": "timeseries"
         },
         {
@@ -853,7 +866,7 @@
                 "h": 6,
                 "w": 8,
                 "x": 8,
-                "y": 20
+                "y": 21
             },
             "id": 90,
             "options": {
@@ -883,7 +896,7 @@
                     "refId": "error_rate"
                 }
             ],
-            "title": "error_rate",
+            "title": "error rate",
             "type": "timeseries"
         },
         {
@@ -954,7 +967,7 @@
                 "h": 6,
                 "w": 8,
                 "x": 16,
-                "y": 20
+                "y": 21
             },
             "id": 89,
             "options": {
@@ -984,7 +997,7 @@
                     "refId": "A"
                 }
             ],
-            "title": "latency_p95",
+            "title": "latency p95",
             "type": "timeseries"
         },
         {
@@ -1048,7 +1061,7 @@
                 "h": 16,
                 "w": 24,
                 "x": 0,
-                "y": 26
+                "y": 27
             },
             "id": 68,
             "options": {
@@ -1066,7 +1079,7 @@
                 "sortBy": [
                     {
                         "desc": true,
-                        "displayName": "Trend #error_rate"
+                        "displayName": "span_name"
                     }
                 ]
             },
@@ -1248,13 +1261,13 @@
         ]
     },
     "time": {
-        "from": "now-3h",
+        "from": "now-6h",
         "to": "now"
     },
     "timepicker": {},
     "timezone": "browser",
     "title": "APM",
     "uid": "zJfYJhynt",
-    "version": 14,
+    "version": 15,
     "weekStart": ""
 }
