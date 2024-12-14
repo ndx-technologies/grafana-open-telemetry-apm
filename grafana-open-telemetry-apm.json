@@ -15,7 +15,13 @@
             "type": "grafana",
             "id": "grafana",
             "name": "Grafana",
-            "version": "11.3.1"
+            "version": "11.4.0"
+        },
+        {
+            "type": "panel",
+            "id": "heatmap",
+            "name": "Heatmap",
+            "version": ""
         },
         {
             "type": "datasource",
@@ -71,12 +77,93 @@
     "links": [],
     "panels": [
         {
+            "datasource": {
+                "type": "prometheus",
+                "uid": "${DS_PROMETHEUS}"
+            },
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {
+                        "hideFrom": {
+                            "legend": false,
+                            "tooltip": false,
+                            "viz": false
+                        },
+                        "scaleDistribution": {
+                            "type": "linear"
+                        }
+                    }
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 9,
+                "w": 24,
+                "x": 0,
+                "y": 0
+            },
+            "id": 94,
+            "options": {
+                "calculate": false,
+                "cellGap": 1,
+                "color": {
+                    "exponent": 0.5,
+                    "fill": "dark-orange",
+                    "mode": "scheme",
+                    "reverse": false,
+                    "scale": "exponential",
+                    "scheme": "Oranges",
+                    "steps": 64
+                },
+                "exemplars": {
+                    "color": "rgba(255,0,255,0.7)"
+                },
+                "filterValues": {
+                    "le": 1e-9
+                },
+                "legend": {
+                    "show": false
+                },
+                "rowsFrame": {
+                    "layout": "auto"
+                },
+                "tooltip": {
+                    "mode": "single",
+                    "showColorScale": false,
+                    "yHistogram": false
+                },
+                "yAxis": {
+                    "axisPlacement": "left",
+                    "reverse": false,
+                    "unit": "s"
+                }
+            },
+            "pluginVersion": "11.4.0",
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "${DS_PROMETHEUS}"
+                    },
+                    "editorMode": "code",
+                    "expr": "sum(increase(span_metrics_duration_seconds_bucket{service_name=~\"$service_name\", service_version=~\"$service_version\", service_namespace=~\"$service_namespace\",span_kind=\"$span_kind\",span_name=~\"$span_name\"}[$__interval])) by (le)",
+                    "format": "heatmap",
+                    "instant": false,
+                    "legendFormat": "__auto",
+                    "range": true,
+                    "refId": "A"
+                }
+            ],
+            "title": "latency",
+            "type": "heatmap"
+        },
+        {
             "collapsed": false,
             "gridPos": {
                 "h": 1,
                 "w": 24,
                 "x": 0,
-                "y": 0
+                "y": 9
             },
             "id": 38,
             "panels": [],
@@ -110,7 +197,7 @@
                 "h": 4,
                 "w": 8,
                 "x": 0,
-                "y": 1
+                "y": 10
             },
             "id": 91,
             "options": {
@@ -130,7 +217,7 @@
                 "textMode": "auto",
                 "wideLayout": true
             },
-            "pluginVersion": "11.3.1",
+            "pluginVersion": "11.4.0",
             "targets": [
                 {
                     "datasource": {
@@ -180,7 +267,7 @@
                 "h": 4,
                 "w": 8,
                 "x": 8,
-                "y": 1
+                "y": 10
             },
             "id": 92,
             "options": {
@@ -200,7 +287,7 @@
                 "textMode": "auto",
                 "wideLayout": true
             },
-            "pluginVersion": "11.3.1",
+            "pluginVersion": "11.4.0",
             "targets": [
                 {
                     "datasource": {
@@ -250,7 +337,7 @@
                 "h": 4,
                 "w": 8,
                 "x": 16,
-                "y": 1
+                "y": 10
             },
             "id": 93,
             "options": {
@@ -270,7 +357,7 @@
                 "textMode": "auto",
                 "wideLayout": true
             },
-            "pluginVersion": "11.3.1",
+            "pluginVersion": "11.4.0",
             "targets": [
                 {
                     "datasource": {
@@ -352,7 +439,7 @@
                 "h": 6,
                 "w": 8,
                 "x": 0,
-                "y": 5
+                "y": 14
             },
             "id": 85,
             "options": {
@@ -367,7 +454,7 @@
                     "sort": "none"
                 }
             },
-            "pluginVersion": "11.3.1",
+            "pluginVersion": "11.4.0",
             "targets": [
                 {
                     "datasource": {
@@ -456,7 +543,7 @@
                 "h": 6,
                 "w": 8,
                 "x": 8,
-                "y": 5
+                "y": 14
             },
             "id": 87,
             "options": {
@@ -471,7 +558,7 @@
                     "sort": "none"
                 }
             },
-            "pluginVersion": "11.3.1",
+            "pluginVersion": "11.4.0",
             "targets": [
                 {
                     "datasource": {
@@ -561,7 +648,7 @@
                 "h": 6,
                 "w": 8,
                 "x": 16,
-                "y": 5
+                "y": 14
             },
             "id": 82,
             "options": {
@@ -576,7 +663,7 @@
                     "sort": "none"
                 }
             },
-            "pluginVersion": "11.3.1",
+            "pluginVersion": "11.4.0",
             "targets": [
                 {
                     "datasource": {
@@ -584,7 +671,7 @@
                         "uid": "${DS_PROMETHEUS}"
                     },
                     "editorMode": "code",
-                    "expr": "histogram_quantile(0.95, sum(rate(span_metrics_duration_seconds_bucket{service_name=~\"$service_name\", service_version=~\"$service_version\", service_namespace=~\"$service_namespace\",span_kind=\"$span_kind\",span_name=~\"$span_name\"}[$__rate_interval])) by (le, service_version))",
+                    "expr": "histogram_quantile(0.95, sum(increase(span_metrics_duration_seconds_bucket{service_name=~\"$service_name\", service_version=~\"$service_version\", service_namespace=~\"$service_namespace\",span_kind=\"$span_kind\",span_name=~\"$span_name\"}[$__interval])) by (le, service_version))",
                     "instant": false,
                     "legendFormat": "__auto",
                     "range": true,
@@ -659,7 +746,7 @@
                 "h": 6,
                 "w": 8,
                 "x": 0,
-                "y": 11
+                "y": 20
             },
             "id": 76,
             "options": {
@@ -674,7 +761,7 @@
                     "sort": "none"
                 }
             },
-            "pluginVersion": "11.3.1",
+            "pluginVersion": "11.4.0",
             "targets": [
                 {
                     "datasource": {
@@ -766,7 +853,7 @@
                 "h": 6,
                 "w": 8,
                 "x": 8,
-                "y": 11
+                "y": 20
             },
             "id": 90,
             "options": {
@@ -781,7 +868,7 @@
                     "sort": "none"
                 }
             },
-            "pluginVersion": "11.3.1",
+            "pluginVersion": "11.4.0",
             "targets": [
                 {
                     "datasource": {
@@ -867,7 +954,7 @@
                 "h": 6,
                 "w": 8,
                 "x": 16,
-                "y": 11
+                "y": 20
             },
             "id": 89,
             "options": {
@@ -882,7 +969,7 @@
                     "sort": "none"
                 }
             },
-            "pluginVersion": "11.3.1",
+            "pluginVersion": "11.4.0",
             "targets": [
                 {
                     "datasource": {
@@ -961,7 +1048,7 @@
                 "h": 16,
                 "w": 24,
                 "x": 0,
-                "y": 17
+                "y": 26
             },
             "id": 68,
             "options": {
@@ -979,11 +1066,11 @@
                 "sortBy": [
                     {
                         "desc": true,
-                        "displayName": "Trend #hits"
+                        "displayName": "Trend #error_rate"
                     }
                 ]
             },
-            "pluginVersion": "11.3.1",
+            "pluginVersion": "11.4.0",
             "targets": [
                 {
                     "datasource": {
@@ -1161,13 +1248,13 @@
         ]
     },
     "time": {
-        "from": "2024-11-30T08:17:28.714Z",
-        "to": "2024-11-30T10:28:18.596Z"
+        "from": "now-3h",
+        "to": "now"
     },
     "timepicker": {},
     "timezone": "browser",
     "title": "APM",
     "uid": "zJfYJhynt",
-    "version": 10,
+    "version": 14,
     "weekStart": ""
 }
