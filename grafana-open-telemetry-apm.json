@@ -1153,7 +1153,7 @@
                 "y": 27
             },
             "id": 68,
-            "maxDataPoints": 50,
+            "maxDataPoints": 20,
             "options": {
                 "cellHeight": "sm",
                 "footer": {
@@ -1278,6 +1278,7 @@
                 },
                 "refresh": 2,
                 "regex": "",
+                "sort": 1,
                 "type": "query"
             },
             {
@@ -1298,6 +1299,7 @@
                 },
                 "refresh": 2,
                 "regex": "",
+                "sort": 1,
                 "type": "query"
             },
             {
@@ -1317,6 +1319,7 @@
                 },
                 "refresh": 2,
                 "regex": "",
+                "sort": 1,
                 "type": "query"
             },
             {
@@ -1338,6 +1341,7 @@
                 },
                 "refresh": 2,
                 "regex": "",
+                "sort": 1,
                 "type": "query"
             },
             {
@@ -1365,13 +1369,13 @@
         ]
     },
     "time": {
-        "from": "now-7d",
+        "from": "now-24h",
         "to": "now"
     },
     "timepicker": {},
     "timezone": "browser",
     "title": "APM",
     "uid": "zJfYJhynt",
-    "version": 25,
+    "version": 28,
     "weekStart": ""
 }
