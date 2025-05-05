@@ -27,7 +27,7 @@
             "type": "grafana",
             "id": "grafana",
             "name": "Grafana",
-            "version": "11.6.0"
+            "version": "11.6.1"
         },
         {
             "type": "panel",
@@ -151,7 +151,7 @@
                     "unit": "s"
                 }
             },
-            "pluginVersion": "11.6.0",
+            "pluginVersion": "11.6.1",
             "targets": [
                 {
                     "datasource": {
@@ -217,7 +217,7 @@
                 "textMode": "auto",
                 "wideLayout": true
             },
-            "pluginVersion": "11.6.0",
+            "pluginVersion": "11.6.1",
             "targets": [
                 {
                     "datasource": {
@@ -287,7 +287,7 @@
                 "textMode": "auto",
                 "wideLayout": true
             },
-            "pluginVersion": "11.6.0",
+            "pluginVersion": "11.6.1",
             "targets": [
                 {
                     "datasource": {
@@ -381,7 +381,7 @@
                 "textMode": "auto",
                 "wideLayout": true
             },
-            "pluginVersion": "11.6.0",
+            "pluginVersion": "11.6.1",
             "targets": [
                 {
                     "datasource": {
@@ -492,7 +492,7 @@
                     "sort": "none"
                 }
             },
-            "pluginVersion": "11.6.0",
+            "pluginVersion": "11.6.1",
             "targets": [
                 {
                     "datasource": {
@@ -597,7 +597,7 @@
                     "sort": "none"
                 }
             },
-            "pluginVersion": "11.6.0",
+            "pluginVersion": "11.6.1",
             "targets": [
                 {
                     "datasource": {
@@ -727,7 +727,7 @@
                     "sort": "none"
                 }
             },
-            "pluginVersion": "11.6.0",
+            "pluginVersion": "11.6.1",
             "targets": [
                 {
                     "datasource": {
@@ -835,11 +835,11 @@
                 },
                 "tooltip": {
                     "hideZeros": false,
-                    "mode": "multi",
+                    "mode": "single",
                     "sort": "none"
                 }
             },
-            "pluginVersion": "11.6.0",
+            "pluginVersion": "11.6.1",
             "targets": [
                 {
                     "datasource": {
@@ -947,7 +947,7 @@
                     "sort": "none"
                 }
             },
-            "pluginVersion": "11.6.0",
+            "pluginVersion": "11.6.1",
             "targets": [
                 {
                     "datasource": {
@@ -1069,11 +1069,11 @@
                 },
                 "tooltip": {
                     "hideZeros": false,
-                    "mode": "multi",
+                    "mode": "single",
                     "sort": "none"
                 }
             },
-            "pluginVersion": "11.6.0",
+            "pluginVersion": "11.6.1",
             "targets": [
                 {
                     "datasource": {
@@ -1173,7 +1173,7 @@
                     }
                 ]
             },
-            "pluginVersion": "11.6.0",
+            "pluginVersion": "11.6.1",
             "targets": [
                 {
                     "datasource": {
@@ -1266,14 +1266,14 @@
                     "type": "prometheus",
                     "uid": "${DS_PROMETHEUS}"
                 },
-                "definition": "label_values(span_metrics_calls_total,service_name)",
+                "definition": "label_values(span_metrics_calls_total{span_kind=\"$span_kind\"},service_name)",
                 "includeAll": true,
                 "multi": true,
                 "name": "service_name",
                 "options": [],
                 "query": {
                     "qryType": 1,
-                    "query": "label_values(span_metrics_calls_total,service_name)",
+                    "query": "label_values(span_metrics_calls_total{span_kind=\"$span_kind\"},service_name)",
                     "refId": "PrometheusVariableQueryEditor-VariableQuery"
                 },
                 "refresh": 2,
@@ -1287,14 +1287,14 @@
                     "type": "prometheus",
                     "uid": "${DS_PROMETHEUS}"
                 },
-                "definition": "label_values(span_metrics_calls_total,service_version)",
+                "definition": "label_values(span_metrics_calls_total{span_kind=\"$span_kind\"},service_version)",
                 "includeAll": true,
                 "multi": true,
                 "name": "service_version",
                 "options": [],
                 "query": {
                     "qryType": 1,
-                    "query": "label_values(span_metrics_calls_total,service_version)",
+                    "query": "label_values(span_metrics_calls_total{span_kind=\"$span_kind\"},service_version)",
                     "refId": "PrometheusVariableQueryEditor-VariableQuery"
                 },
                 "refresh": 2,
@@ -1308,13 +1308,13 @@
                     "type": "prometheus",
                     "uid": "${DS_PROMETHEUS}"
                 },
-                "definition": "label_values(span_metrics_calls_total,service_namespace)",
+                "definition": "label_values(span_metrics_calls_total{span_kind=\"$span_kind\"},service_namespace)",
                 "includeAll": false,
                 "name": "service_namespace",
                 "options": [],
                 "query": {
                     "qryType": 1,
-                    "query": "label_values(span_metrics_calls_total,service_namespace)",
+                    "query": "label_values(span_metrics_calls_total{span_kind=\"$span_kind\"},service_namespace)",
                     "refId": "PrometheusVariableQueryEditor-VariableQuery"
                 },
                 "refresh": 2,
@@ -1323,26 +1323,36 @@
                 "type": "query"
             },
             {
-                "current": {},
-                "datasource": {
-                    "type": "prometheus",
-                    "uid": "${DS_PROMETHEUS}"
+                "current": {
+                    "text": "SPAN_KIND_SERVER",
+                    "value": "SPAN_KIND_SERVER"
                 },
-                "definition": "label_values(span_metrics_calls_total,span_kind)",
-                "hide": 1,
-                "includeAll": false,
                 "label": "span_kind",
                 "name": "span_kind",
-                "options": [],
-                "query": {
-                    "qryType": 1,
-                    "query": "label_values(span_metrics_calls_total,span_kind)",
-                    "refId": "PrometheusVariableQueryEditor-VariableQuery"
-                },
-                "refresh": 2,
-                "regex": "",
-                "sort": 1,
-                "type": "query"
+                "options": [
+                    {
+                        "selected": false,
+                        "text": "SPAN_KIND_CLIENT",
+                        "value": "SPAN_KIND_CLIENT"
+                    },
+                    {
+                        "selected": false,
+                        "text": "SPAN_KIND_CONSUMER",
+                        "value": "SPAN_KIND_CONSUMER"
+                    },
+                    {
+                        "selected": false,
+                        "text": "SPAN_KIND_PRODUCER",
+                        "value": "SPAN_KIND_PRODUCER"
+                    },
+                    {
+                        "selected": true,
+                        "text": "SPAN_KIND_SERVER",
+                        "value": "SPAN_KIND_SERVER"
+                    }
+                ],
+                "query": "SPAN_KIND_CLIENT, SPAN_KIND_CONSUMER, SPAN_KIND_PRODUCER, SPAN_KIND_SERVER",
+                "type": "custom"
             },
             {
                 "current": {},
@@ -1350,7 +1360,7 @@
                     "type": "prometheus",
                     "uid": "${DS_PROMETHEUS}"
                 },
-                "definition": "label_values(span_metrics_calls_total,span_name)",
+                "definition": "label_values(span_metrics_calls_total{span_kind=\"$span_kind\"},span_name)",
                 "includeAll": true,
                 "label": "span_name",
                 "multi": true,
@@ -1358,7 +1368,7 @@
                 "options": [],
                 "query": {
                     "qryType": 1,
-                    "query": "label_values(span_metrics_calls_total,span_name)",
+                    "query": "label_values(span_metrics_calls_total{span_kind=\"$span_kind\"},span_name)",
                     "refId": "PrometheusVariableQueryEditor-VariableQuery"
                 },
                 "refresh": 1,
@@ -1376,6 +1386,6 @@
     "timezone": "browser",
     "title": "APM",
     "uid": "zJfYJhynt",
-    "version": 28,
+    "version": 37,
     "weekStart": ""
 }
