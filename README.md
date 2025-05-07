@@ -1,6 +1,6 @@
 APM[^1] Grafana dashboard based on Open Telemetry spanmetrics[^2] from traces
 
-- Golden Metrics / RED (volume, errors, latency)
+- Golden Metrics / RED (Rate, Errors, Duration) / (Volume, Errors, Latency)
 - standard Open Telemetry spanmetrics labels from traces
 
 <img width="1170" alt="example" src="https://github.com/user-attachments/assets/e3205ced-6aba-4a11-b088-0d3904b138f1" />
