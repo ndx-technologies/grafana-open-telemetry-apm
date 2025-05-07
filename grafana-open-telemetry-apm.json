@@ -1109,6 +1109,12 @@
                         "filterable": true,
                         "inspect": false
                     },
+                    "links": [
+                        {
+                            "title": "Details",
+                            "url": "/d/zJfYJhynt/apm?orgId=1&from=now-12h&to=now&timezone=browser&var-service_name=$__all&var-service_version=$__all&var-service_namespace=production&var-span_kind=SPAN_KIND_SERVER&var-span_name=${__data.fields.span_name}&refresh=30s"
+                        }
+                    ],
                     "mappings": [],
                     "thresholds": {
                         "mode": "absolute",
@@ -1141,6 +1147,18 @@
                             {
                                 "id": "unit",
                                 "value": "percentunit"
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "span_name"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 444
                             }
                         ]
                     }
@@ -1389,6 +1407,6 @@
     "timezone": "browser",
     "title": "APM",
     "uid": "zJfYJhynt",
-    "version": 38,
+    "version": 42,
     "weekStart": ""
 }
