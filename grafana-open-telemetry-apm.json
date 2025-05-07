@@ -1112,7 +1112,7 @@
                     "links": [
                         {
                             "title": "Details",
-                            "url": "/d/${__dashboard.uid}/apm?orgId=1&from=now-12h&to=now&timezone=browser&var-service_name=$__all&var-service_version=$__all&var-service_namespace=production&var-span_kind=SPAN_KIND_SERVER&var-span_name=${__data.fields.span_name}&refresh=30s"
+                            "url": "/d/${__dashboard.uid}﻿﻿/${__dashboard}?${__all_variables}&var-span_name=﻿${__data.fields.span_name}"
                         }
                     ],
                     "mappings": [],
@@ -1407,6 +1407,6 @@
     "timezone": "browser",
     "title": "APM",
     "uid": "zJfYJhynt",
-    "version": 43,
+    "version": 47,
     "weekStart": ""
 }
