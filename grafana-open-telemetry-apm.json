@@ -1248,8 +1248,11 @@
                     }
                 },
                 {
-                    "id": "merge",
-                    "options": {}
+                    "id": "joinByField",
+                    "options": {
+                        "byField": "span_name",
+                        "mode": "outer"
+                    }
                 }
             ],
             "type": "table"
@@ -1379,13 +1382,13 @@
         ]
     },
     "time": {
-        "from": "now-24h",
+        "from": "now-12h",
         "to": "now"
     },
     "timepicker": {},
     "timezone": "browser",
     "title": "APM",
     "uid": "zJfYJhynt",
-    "version": 37,
+    "version": 38,
     "weekStart": ""
 }
