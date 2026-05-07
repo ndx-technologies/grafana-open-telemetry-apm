@@ -1,5 +1,5 @@
 <p align="center">
-  ✨ Sponsored by <a href="https://apps.apple.com/app/id6738306589">NDX AI Shopping Assistant</a>
+  ✨ Sponsored by <a href="https://ndx.one/?ct=github">NDX AI Shopping Assistant</a>
 </p>
 
 APM[^1] Grafana dashboard based on Open Telemetry spanmetrics[^2] from traces
