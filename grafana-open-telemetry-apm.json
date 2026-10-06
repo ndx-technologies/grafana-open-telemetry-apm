@@ -208,7 +208,7 @@
                                     "links": [
                                         {
                                             "title": "Details",
-                                            "url": "/d/${__dashboard.uid}/${__dashboard}?${__all_variables}&var-span_name=${__data.fields.span_name}"
+                                            "url": "/d/${__dashboard.uid}/${__dashboard}?${__all_variables}&var-span_name=${__data.fields[\"span.name\"]}"
                                         }
                                     ],
                                     "custom": {
@@ -245,18 +245,6 @@
                                             {
                                                 "id": "unit",
                                                 "value": "percentunit"
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        "matcher": {
-                                            "id": "byName",
-                                            "options": "span_name"
-                                        },
-                                        "properties": [
-                                            {
-                                                "id": "custom.width",
-                                                "value": 444
                                             }
                                         ]
                                     },
